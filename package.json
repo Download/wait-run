@@ -1,6 +1,6 @@
 {
   "name": "just-wait",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Wait for a file or directory to change then just return",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,12 @@
   "author": "Rick Wong",
   "contributors": [
     {
-      "name": "Stijn de Witt"
+      "name": "Stijn de Witt",
+	  "website": "http://StijnDeWitt.com"
+    },
+    {
+      "name": "Mark Reynolds",
+	  "website": "https://github.com/lostthetrail"
     }
   ],
   "repository": {
