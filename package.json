@@ -3,6 +3,9 @@
   "version": "1.0.3",
   "description": "Wait for a file or directory to change then just return",
   "main": "index.js",
+  "bin": {
+    "just-wait": "./bin/just-wait.js"
+  },
   "scripts": {},
   "author": "Rick Wong",
   "contributors": [
