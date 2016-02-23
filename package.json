@@ -1,6 +1,6 @@
 {
   "name": "just-wait",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Wait for a file or directory to change then just return",
   "main": "index.js",
   "bin": {
