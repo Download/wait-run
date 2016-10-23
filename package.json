@@ -1,6 +1,6 @@
 {
   "name": "just-wait",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Wait for a file or directory to change then just return",
   "main": "index.js",
   "bin": {
@@ -11,11 +11,11 @@
   "contributors": [
     {
       "name": "Stijn de Witt",
-	  "website": "http://StijnDeWitt.com"
+      "website": "http://StijnDeWitt.com"
     },
     {
       "name": "Mark Reynolds",
-	  "website": "https://github.com/lostthetrail"
+      "website": "https://github.com/lostthetrail"
     }
   ],
   "repository": {
@@ -27,8 +27,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "commander": "2.9.0",
-    "gaze": "0.5.2",
-    "picolog": "^1.0.0"
+    "gaze": "0.5.2"
   },
   "keywords": [
     "wait",

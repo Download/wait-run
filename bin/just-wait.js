@@ -6,8 +6,8 @@
 var program = require('commander');
 var join = require('path').join;
 var Gaze = require('gaze').Gaze;
-var chalk = require('chalk'); 
-var log = require('picolog');
+var chalk = require('chalk');
+var log; try {log = require('ulog')('just-wait')} catch(e){log = console}
 
 var  g=chalk.green, gb=chalk.green.bold,  r=chalk.red, rb=chalk.red.bold,
 	wh=chalk.white, wb=chalk.white.bold, gr=chalk.grey;
@@ -35,18 +35,18 @@ program
  * Examples.
  */
 program.on('--help', function() {
-	log.warn();
-	log.warn(wh('  Examples:'));
-	log.warn();
-	log.warn(gr('    # watch "lib" dir, return when something changes'));
-	log.warn(wh('    $ just-wait -p "lib/**"'));
-	log.warn();
-	log.warn(gr('    # watch "lib" and "src" dirs, return 500ms after something changes'));
-	log.warn(wh('    $ just-wait -p "lib/**,src/**" -d 500'));
-	log.warn();
-	log.warn(gr('    # watch "lib" dir, timeout after 10 seconds'));
-	log.warn(wh('    $ just-wait -p "lib/**,src/**" -t 10'));
-	log.warn();
+	log.info();
+	log.info(wh('  Examples:'));
+	log.info();
+	log.info(gr('    # watch "lib" dir, return when something changes'));
+	log.info(wh('    $ just-wait -p "lib/**"'));
+	log.info();
+	log.info(gr('    # watch "lib" and "src" dirs, return 500ms after something changes'));
+	log.info(wh('    $ just-wait -p "lib/**,src/**" -d 500'));
+	log.info();
+	log.info(gr('    # watch "lib" dir, timeout after 10 seconds'));
+	log.info(wh('    $ just-wait -p "lib/**,src/**" -t 10'));
+	log.info();
 })
 
 /**
@@ -61,7 +61,7 @@ silent = program.silent || false,
 pattern = program.pattern;
 
 if (!silent) {
-	log.warn(wb('Waiting ') + wh('for %s (max %d seconds)'), pattern, timeout);
+	log.info(wb('Waiting ') + wh('for %s (max %d seconds)'), pattern, timeout);
 }
 
 setTimeout(function(){
@@ -90,7 +90,7 @@ function stop(event, path) {
 
 	setTimeout(function() {
 		if (!silent) {
-			log.warn(chalk.green.bold('Ready. ') + chalk.green(pattern + ' ' + event));
+			log.info(chalk.green.bold('Ready. ') + chalk.green(pattern + ' ' + event));
 		}
 		process.exit(0);
 	}, delay);
@@ -110,7 +110,7 @@ function nomatch() {
 		watch = new Gaze(program.pattern);
 		watch.on('all', stop);
 		watch.on('nomatch', nomatch); // Recursion
-		watch.on('ready', function(watcher) { 
+		watch.on('ready', function(watcher) {
 			var keys = Object.keys(watcher._watched);
 			if (keys && keys.length) {
 				stop('added', watcher._watched[keys[0]]);
