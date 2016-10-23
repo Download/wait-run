@@ -29,7 +29,7 @@ program
 		'                            More info: https://github.com/isaacs/minimatch', list, '**')
 	.option('-d, --delay <milliseconds>', 'delay returning for a number of milliseconds', parseInt)
 	.option('-t, --timeout <seconds>', 'timeout waiting after a number of seconds (default=30)', parseInt)
-	.option('-s, --silent', 'supress logging.')
+	.option('-s, --silent', 'suppress logging.')
 
 /**
  * Examples.
@@ -90,7 +90,7 @@ function stop(event, path) {
 
 	setTimeout(function() {
 		if (!silent) {
-			log.info(chalk.green.bold('Ready. ') + chalk.green(pattern + ' ' + event));
+			log.warn(chalk.green.bold('Ready. ') + chalk.green(pattern + ' ' + event));
 		}
 		process.exit(0);
 	}, delay);

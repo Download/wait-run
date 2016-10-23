@@ -24,7 +24,7 @@ Usage: just-wait [options]
                                 More info: https://github.com/isaacs/minimatch
     -d, --delay <milliseconds>  delay returning for a number of milliseconds
     -t, --timeout <seconds>     timeout waiting after a number of seconds (default=30)
-    -s, --silent                supress logging.
+    -s, --silent                suppress logging.
 
   Examples:
 
@@ -62,11 +62,12 @@ Timed out waiting for README.md after 10 seconds.
 $
 ```
 
-It uses [picolog](https://npmjs.org/package/picolog) for logging, which allows us
+It uses [ulog](https://npmjs.org/package/ulog) for logging, which allows us
 to influence logging verbosity. The `Waiting for..` line is logged at level
-`WARN` (which means it is visible at picolog's default log level of `WARN`) and
-both the success and error message are logged at level `ERROR`. You can change
-the picolog log level by setting the environment variable `PICOLOG_LEVEL`, or you
+`INFO` (which means it is visible at ulog's default log level of `INFO`), the
+success message is logged at `WARN` and the error message is logged at level
+`ERROR`. You can change the log level by [setting the environment variable
+`LOG`](https://github.com/download/ulog#environment-variable), or you
 can completely suppress logging by passing the `--silent` (or `-s`) flag.
 
 ## Credits
