@@ -1,4 +1,4 @@
-# just-wait <sup><sub>v1.0.7</sub></sup>
+# just-wait <sup><sub>v1.0.9</sub></sup>
 
 [![version](https://img.shields.io/npm/v/just-wait.svg)](https://npmjs.org/package/just-wait) ![license](https://img.shields.io/npm/l/just-wait.svg) ![installs](https://img.shields.io/npm/dt/just-wait.svg)
 
