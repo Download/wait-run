@@ -1,5 +1,7 @@
 # just-wait <sup><sub>v1.0.10</sub></sup>
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Download/just-wait.svg)](https://greenkeeper.io/)
+
 [![version](https://img.shields.io/npm/v/just-wait.svg)](https://npmjs.org/package/just-wait)
 ![license](https://img.shields.io/npm/l/just-wait.svg)
 ![installs](https://img.shields.io/npm/dt/just-wait.svg)
