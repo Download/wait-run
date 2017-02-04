@@ -1,18 +1,28 @@
-# just-wait <sup><sub>v1.0.9</sub></sup>
+# just-wait <sup><sub>v1.0.10</sub></sup>
 
-[![version](https://img.shields.io/npm/v/just-wait.svg)](https://npmjs.org/package/just-wait) ![license](https://img.shields.io/npm/l/just-wait.svg) ![installs](https://img.shields.io/npm/dt/just-wait.svg)
+[![version](https://img.shields.io/npm/v/just-wait.svg)](https://npmjs.org/package/just-wait)
+![license](https://img.shields.io/npm/l/just-wait.svg)
+![installs](https://img.shields.io/npm/dt/just-wait.svg)
 
 Waits for a file or directory to change or appear, then just returns. The watched file or directory does not have to exist yet.
 
 ## Installation
 
-```bash
-npm install --g just-wait
+To use `just-wait` from the command-line, install it globally:
+
+```sh
+npm install -g just-wait
+```
+
+To make sure your package is portable, also install it locally:
+
+```sh
+npm install --save-dev just-wait
 ```
 
 ## Usage
 
-```bash
+```sh
 # Use --help or -h to see usage details
 $ just-wait --help
 Usage: just-wait [options]
@@ -40,6 +50,31 @@ Usage: just-wait [options]
 
 In the case of a timeout, `just-wait` will return with exit code `1`.
 In other cases it will return with exit code `0`
+
+### From package.json
+
+`just-wait` is usually used in the `scripts` section of package.json, to
+wait for some other, parallel task to create or change a file.
+
+An example might be bundling your server code with the `--watch` flag.
+This makes webpack watch for changes... but it also means the command does
+not return so how do we actually start our server after the initial build has
+succeeded? Simple! We just wait for server.js to have been created!
+
+```json
+{
+  "scripts": {
+	"build": "webpack -p",
+	"build-dev": "webpack -d --watch",
+    "start": "node server.js",
+	"start-dev": "just-wait -p \"server.js\" && npm run start",
+	"dev": "run-p --silent build-dev start-dev"
+  }
+}
+```
+
+Running `npm run dev` will run the `build-dev` and `start-dev` commands in parallel.
+The `start-dev` command then uses `just-wait` to wait for server.js to appear or change.
 
 ## Logging
 By default `just-wait` will log two messages to the terminal to provide
@@ -81,11 +116,11 @@ which was the basis for Rick's version.
 Special thanks to [Mark Reynolds](https://github.com/lostthetrail) for making all our lives easier with his [contribution](https://github.com/Download/just-wait/pull/1).
 
 ## Copyright
-* © 2016, [Stijn de Witt](http://StijnDeWitt.com). (this project)
+* © 2017, [Stijn de Witt](http://StijnDeWitt.com). (this project)
 * © 2016, [Rick Wong](https://github.com/RickWong). (wait-run)
 * © 2015, [Fabian Eichenberger](https://github.com/queckezz). (watch-run)
 
 ## License
 * [Creative Commons Attribution 4.0 (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/) (this project)
 * [BSD 3-Clause license](https://opensource.org/licenses/BSD-3-Clause) (wait-run)
-* [MIT License](https://opensource.org/licenses/MIT) (watch-run)
+* [MIT License](https://opensource.org/licenses/MIT) (watch-run)

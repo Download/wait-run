@@ -27,7 +27,8 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "commander": "2.9.0",
-    "gaze": "^1.1.2"
+    "gaze": "^1.1.2",
+    "ulog": "^1.0.0"
   },
   "keywords": [
     "wait",
@@ -35,5 +36,6 @@
     "directory",
     "script",
     "cli"
-  ]
+  ],
+  "devDependencies": {}
 }

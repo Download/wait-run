@@ -7,7 +7,7 @@ var program = require('commander');
 var join = require('path').join;
 var Gaze = require('gaze').Gaze;
 var chalk = require('chalk');
-var log; try {log = require('ulog')('just-wait')} catch(e){log = console}
+var log = require('ulog')('just-wait')
 
 var  g=chalk.green, gb=chalk.green.bold,  r=chalk.red, rb=chalk.red.bold,
 	wh=chalk.white, wb=chalk.white.bold, gr=chalk.grey;
