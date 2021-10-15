@@ -33,7 +33,7 @@ Usage: just-wait [options]
     -p, --pattern <pattern>     glob pattern. "," separates multiple patterns.
                                 More info: https://github.com/isaacs/minimatch
     -d, --delay <milliseconds>  delay returning for a number of milliseconds
-    -t, --timeout <seconds>     timeout waiting after a number of seconds (default=30)
+    -t, --timeout <seconds>     timeout waiting after a number of seconds (not specified => forever; -t without value => 30)
     -s, --silent                suppress logging.
 
   Examples:
@@ -123,4 +123,4 @@ Special thanks to [Mark Reynolds](https://github.com/lostthetrail) for making al
 ## License
 * [Creative Commons Attribution 4.0 (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/) (this project)
 * [BSD 3-Clause license](https://opensource.org/licenses/BSD-3-Clause) (wait-run)
-* [MIT License](https://opensource.org/licenses/MIT) (watch-run)
+* [MIT License](https://opensource.org/licenses/MIT) (watch-run)
