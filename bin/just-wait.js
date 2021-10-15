@@ -28,7 +28,7 @@ program
 	.option('-p, --pattern <pattern>', 'glob pattern. "," separates multiple patterns.\n' +
 		'                            More info: https://github.com/isaacs/minimatch', list, '**')
 	.option('-d, --delay <milliseconds>', 'delay returning for a number of milliseconds', parseInt)
-	.option('-t, --timeout <seconds>', 'timeout waiting after a number of seconds (default=30)', parseInt)
+	.option('-t, --timeout <seconds>', 'timeout waiting after a number of seconds (not specified => forever; -t without value => 30)', parseInt)
 	.option('-s, --silent', 'suppress logging.')
 
 /**
@@ -56,20 +56,24 @@ program.parse(process.argv);
 
 var
 delay = program.delay || 0,
-timeout = program.timeout || 30,
+timeout = program.timeout,
 silent = program.silent || false,
 pattern = program.pattern;
 
+if (typeof timeout === 'number' && isNaN(timeout)) {timeout = 30;}
+
 if (!silent) {
-	log.info(wb('Waiting ') + wh('for %s (max %d seconds)'), pattern, timeout);
+	log.info(wb('Waiting ') + wh('for %s (' + (typeof timeout === 'number'?'max %d seconds':'forever') + ')'), pattern, timeout);
 }
 
-setTimeout(function(){
-	if (!silent) {
-		log.error(chalk.red.bold('Timed out ') + chalk.red('waiting for %s after %d seconds.'), pattern, timeout);
-	}
-	process.exit(1);
-}, timeout * 1000);
+if (typeof timeout === 'number') {
+	setTimeout(function(){
+		if (!silent) {
+			log.error(chalk.red.bold('Timed out ') + chalk.red('waiting for %s after %d seconds.'), pattern, timeout);
+		}
+		process.exit(1);
+	}, timeout * 1000);
+}
 
 /**
  * Watch.
